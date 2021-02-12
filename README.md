@@ -1,2 +1,2 @@
-# r_pos
-Simple PHP P.O.S system
+# ShopE
+PHP P.O.S system with an Inventory Manager

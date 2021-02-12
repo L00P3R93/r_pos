@@ -1,0 +1,7 @@
+.idea
+libraries
+vendor
+composer.lock
+uploads/imports/*
+uploads/products/*
+config

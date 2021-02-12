@@ -1,0 +1,17 @@
+{
+    "name": "vendor_name/pos",
+    "description": "description",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "syntaks",
+            "email": "email@example.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.14",
+        "ext-mysqli": "*",
+        "ext-json": "*"
+    }
+}
