@@ -13,4 +13,5 @@ $user = $ST->get_staff($user_id);
     <?php require 'components/base/meta.php' ?>
     <title>Home | POS</title>
     <?php require 'components/base/css.php'; ?>
+
 </head>

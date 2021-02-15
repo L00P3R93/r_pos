@@ -35,7 +35,7 @@ if($_POST){
 <script>
     let proceed = "<?php echo $user_group; ?>";
     if(proceed === "2"){
-        redirect("home");
+        redirect("shop");
     }else{
         redirect("shop");
     }

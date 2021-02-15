@@ -17,8 +17,8 @@ reader.onload = (e) => {
  * Datatables Initialization
  * **/
 $(document).ready(function () {
-    $('body').overlayScrollbars({ });
-
+    //$('body').overlayScrollbars({ });
+    //$(".product-form").overlayScrollbars({});
     $('#employees').DataTable({
         dom: 'Bfrtip',
         processing: true,
@@ -214,7 +214,12 @@ $(document).ready(function () {
             {
                 render: function (data, type, row) {
                     let rowID = row[6];
-                    return `<a href="details/product/${rowID}"><i class="fa fa-eye"'></i></a>`
+                    let product_name = row[1]
+                    return `<div class='btn-group' role='group' aria-label='Basic example'>
+                              <a target="_blank" href="${rowID}/" class='btn'><i class='zmdi zmdi-eye text-blue fs-15'></i></a>
+                              <a href="#${rowID}" class='btn' data-toggle="modal" data-target="#edit-product-modal" onclick="set_edit_product_form('${rowID}')"><i class='zmdi zmdi-edit fs-15'></i></a>
+                              <a href="#${rowID}" class='btn' onclick="delete_product('${rowID}','${product_name}')"><i class='zmdi zmdi-delete text-red fs-15'></i></a>
+                            </div>`
                 },
                 targets: 6
             }
@@ -422,6 +427,17 @@ let search_post = (action_page, params, feedback_area='.results', processing_are
     })
 }
 
+let _post = (action_page,params) => {
+    $.ajax({
+        method: "POST",
+        url: action_page,
+        data:params,
+        cache: false,
+        success: (response) => {console.log(response)},
+        error: () => {console.log("Oops! Something went wrong")}
+    })
+}
+
 let create_order = () => {
     let params = "create=1";
     db_post('controllers/cart/create_order.php',params)
@@ -431,6 +447,48 @@ let get_order = (order_id) => {
     let params = `order_id=${order_id}`;
     db_post('controllers/cart/get_order.php', params)
 }
+
+let save_product = (form) => {
+    let form_data = new FormData(form);
+    console.log(form_data);
+    db_post_2('controllers/action/save_product.php', form_data);
+    return false;
+}
+
+let update_product = (form) => {
+    let form_data = new FormData(form);
+    return false;
+}
+
+let set_edit_product_form = (product_id) => {
+    let params = `product_id=${product_id}`;
+    console.log(params);
+    db_post('controllers/action/set_edit_product.php', params,'persistent','#edit_product_form');
+}
+
+let delete_product = (product_id, product_name="None") => {
+    bootbox.confirm({
+        message: `Confirm you want to delete product: <strong>${product_name}</strong>`,
+        buttons: {
+            confirm: {
+                label: 'Yes',
+                className: 'btn-success'
+            },
+            cancel: {
+                label: 'No',
+                className: 'btn-danger'
+            }
+        },
+        callback: function(result){
+            console.log(`Delete Confirmation: ${result}`)
+            if(result){
+                let params = `product_id=${product_id}`;
+                _post("controllers/action/delete_product.php", params);
+            }
+        }
+    })
+}
+
 /**
  * Event Listeners & Handlers
  **/
@@ -455,7 +513,6 @@ $('.js-hide-modal1').on('click',function(){
     let params = "s=2";
     cart_post('controllers/cart/set_order.php',params, '.set_details')
 });
-
 
 
 $('.save_staff').on('click', function(e){
@@ -521,6 +578,8 @@ $(".save_product").on('click', function(){
     db_post_2('controllers/action/save_product.php', form_data);
 })
 
+
+
 $(".import_products").on("click", function(e){
     let label_ = 1;
     let excel_file = $('#excel_file').prop('files')[0];
@@ -553,11 +612,25 @@ $("#cart_search_customer").bind('keyup click', function(e){
         search_post('controllers/search/cart_search.php', search,'.results','.results')
     }
 })
+
 $(document).click(function(){
     $('.results').hide();
+    $('.resultsA').hide();
 });
 
 $(".search_link").on("click", function(){
     let customer_id = $(this).attr('cid');
     console.log(customer_id);
 })
+
+$(".search-form").bind("keyup click", function(){
+     let search_str = $(this).val();
+     if(search_str.length > 3){
+         let search = `search=${search_str}`
+         console.log(search);
+         $(".resultsA").show();
+         $(".resultsA").attr('style','');
+         search_post('controllers/search/main_search.php', search,'.resultsA','.resultsA')
+     }
+})
+

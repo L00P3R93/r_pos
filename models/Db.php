@@ -104,9 +104,13 @@ class Db{
         return self::execS($q)[0];
     }
 
-    public static function log($content){
-        $fields = array('activity', 'date_created');
-        $values = array("$content", FULL_DATE);
+    public static function log($content,$user_id){
+        $fields = array('activity', 'user_id');
+        $values = array("$content", "$user_id");
         return self::insert('r_activity_logs', $fields, $values);
+    }
+
+    public static function delete($table, $where){
+        return self::exec("DELETE FROM $table WHERE $where");
     }
 }

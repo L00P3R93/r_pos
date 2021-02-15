@@ -1,16 +1,32 @@
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<script src="assets/plugins/jquery/jquery.js"></script>
+<script src="http://localhost/pos/assets/plugins/jquery/jquery.js"></script>
 
 <!-- Bootstrap -->
-<script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="http://localhost/pos/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<script src="assets/plugins/isotope/isotope.pkgd.min.js"></script>
+<script src="http://localhost/pos/assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="http://localhost/pos/assets/plugins/isotope/isotope.pkgd.min.js"></script>
+<script src="http://localhost/pos/assets/js/bootbox.js"></script>
+<script src="http://localhost/pos/assets/plugins/slick/slick.min.js"></script>
+<script src="http://localhost/pos/assets/plugins/MagnificPopup/jquery.magnific-popup.min.js"></script>
+<script>
+    $('.gallery-lb').each(function() { // the containers for all your galleries
+        $(this).magnificPopup({
+            delegate: 'a', // the selector for gallery item
+            type: 'image',
+            gallery: {
+                enabled:true
+            },
+            mainClass: 'mfp-fade'
+        });
+    });
+</script>
 <!-- AdminLTE App -->
-<script src="assets/dist/js/adminlte.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="controllers/js/functions.js"></script>
+<script src="http://localhost/pos/assets/dist/js/adminlte.js"></script>
+<script src="http://localhost/pos/assets/js/main.js"></script>
+<script src="http://localhost/pos/assets/js/slick-custom.js"></script>
+<script src="http://localhost/pos/controllers/js/functions.js"></script>
 
 <!--Datatables -->
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

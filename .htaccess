@@ -1,5 +1,12 @@
+Options +FollowSymlinks
 RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
-RewriteRule ^(.*)$ $1.php
+
+RewriteRule ^([a-z]+)\/?$ $1.php
+RewriteRule ^([0-9]+)\/?$ details.php?product=$1 [NC]
+
+
+#RewriteRule ^detail/loans/([0-9]+)$ details.php?loan=$1 [NC,QSA]
+#RewriteRule ^detail/customers/([0-9]+)$ details.php?customer=$1 [NC,QSA]

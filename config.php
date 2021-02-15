@@ -7,6 +7,7 @@ use POS\Staff\Staff;
 use POS\Util\Util;
 use POS\Cart\Cart;
 use POS\Order\Order;
+use POS\Product\Product;
 
 define('POS_NAMESPACE','POS');
 define('POS_DIR_ROOT', dirname(__FILE__));
@@ -22,6 +23,7 @@ require POS_DIR_MODELS.'/Staff.php';
 require POS_DIR_MODELS.'/SKU.php';
 require POS_DIR_MODELS.'/Cart.php';
 require POS_DIR_MODELS.'/Order.php';
+require POS_DIR_MODELS.'/Product.php';
 
 
 $config = array(
@@ -59,3 +61,4 @@ $ST = new Staff();
 $SKU = new SKU();
 $cart = new Cart();
 $order = new Order();
+$prod = new Product();

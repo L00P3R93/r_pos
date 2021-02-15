@@ -1,12 +1,14 @@
 <!-- Font Awesome Icons -->
-<link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
-<link rel="stylesheet" href="assets/md-iconic-font\css\material-design-iconic-font.css"/>
+<link rel="stylesheet" href="http://localhost/pos/assets/plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="http://localhost/pos/assets/md-iconic-font\css\material-design-iconic-font.css"/>
 <!-- overlayScrollbars -->
-<link rel="stylesheet" href="assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+<link rel="stylesheet" href="http://localhost/pos/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+<link rel="stylesheet" type="text/css" href="http://localhost/pos/assets/plugins/slick/slick.css">
+<link rel="stylesheet" type="text/css" href="http://localhost/pos/assets/plugins/MagnificPopup/magnific-popup.css">
 <!-- Theme style -->
-<link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
-<link rel="stylesheet" href="assets/css/main.css"/>
-<link rel="stylesheet" href="assets/css/util.css"/>
+<link rel="stylesheet" href="http://localhost/pos/assets/dist/css/adminlte.min.css">
+<link rel="stylesheet" href="http://localhost/pos/assets/css/main.css"/>
+<link rel="stylesheet" href="http://localhost/pos/assets/css/util.css"/>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css" />
 <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.23/b-1.6.5/b-colvis-1.6.5/b-html5-1.6.5/b-print-1.6.5/datatables.min.css"/>-->
@@ -17,7 +19,7 @@
     body{
         font-family: 'Raleway', sans-serif;
     }
-    .preview_image{
+    .preview_image, .current_image{
         width: 100px;
         height: 100px;
         border-radius: 10%;
@@ -121,8 +123,11 @@
         font-size: 14px;
         color:blue;
     }
-
-    .results {
+    .resultsA{
+        margin-top: 33px !important;
+        width: 100% !important;
+    }
+    .results, .resultsA {
         position: absolute;
         width: 90%;
         max-height: 40vh;
@@ -148,11 +153,11 @@
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
 
-    .results li { display: block }
+    .results li, .resultsA li { display: block }
 
-    .results li:first-child { margin-top: -1px }
+    .results li:first-child, .resultsA li:first-child { margin-top: -1px }
 
-    .results li:first-child:before, .search .results li:first-child:after {
+    .results li:first-child:before, .search .results li:first-child:after, .resultsA li:first-child:before, .search .resultsA li:first-child:after {
         display: block;
         content: '';
         width: 0;
@@ -163,20 +168,20 @@
         border: 5px outset transparent;
     }
 
-    .results li:first-child:before {
+    .results li:first-child:before, .resultsA li:first-child:before {
         border-bottom: 5px solid #c4c7d7;
         top: -11px;
     }
 
-    .results li:first-child:after {
+    .results li:first-child:after, .resultsA li:first-child:after {
         border-bottom: 5px solid #fdfdfd;
         top: -10px;
     }
 
-    .results li:first-child:hover:before, .search .results li:first-child:hover:after { display: none }
+    .results li:first-child:hover:before, .search .results li:first-child:hover:after, .resultsA li:first-child:hover:before, .search .resultsA li:first-child:hover:after { display: none }
 
-    .results li:last-child { margin-bottom: -1px }
-    .results a {
+    .results li:last-child, .resultsA li:last-child { margin-bottom: -1px }
+    .results a, .resultsA a {
         display: block;
         position: relative;
         width: 100%;
@@ -189,9 +194,9 @@
         border-radius: 3px;
     }
 
-    .results a span { font-weight: 200 }
+    .results a span, .resultsA a span { font-weight: 200 }
 
-    .results a:before {
+    .results a:before, .resultsA a:before {
         content: '';
         width: 18px;
         height: 18px;
@@ -199,10 +204,10 @@
         top: 50%;
         right: 10px;
         margin-top: -9px;
-        background: url("https://cssdeck.com/uploads/media/items/7/7BNkBjd.png") 0 0 no-repeat;
+        /*background: url("https://cssdeck.com/uploads/media/items/7/7BNkBjd.png") 0 0 no-repeat;*/
     }
 
-    .results a:hover {
+    .results a:hover, .resultsA a:hover {
         text-decoration: none;
         color: #fff !important;
         text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
@@ -220,7 +225,7 @@
         -o-box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), 0 1px rgba(0, 0, 0, 0.08);
         box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), 0 1px rgba(0, 0, 0, 0.08);
     }
-    .results a span.listed:hover{
+    .results a span.listed:hover, .resultsA a span.listed:hover{
         color: #fff;
     }
     :-moz-placeholder {
@@ -247,4 +252,47 @@
         overflow-y: scroll;
         overflow-x: hidden;
     }
+
+    .product-form{
+        max-height: 60vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    .form-inline .input-group {
+        width: 500px !important;
+    }
+    @media (max-width: 575px) {
+        .form-inline .input-group {
+            width: 250px !important;
+        }
+        .user_names{
+            display: none;
+        }
+    }
+    .input-group-sm > .form-control:not(textarea) {
+        height: calc(1.8125rem + 5px) !important;
+    }
+    /* tell the container's children to float left: */
+    .float-my-children > * {
+        float:left !important;
+        margin-right:5px !important;
+    }
+
+    /* this is called a clearfix. it makes sure that the container's children floats are cleared, without using extra markup */
+
+    .clearfix {
+        *zoom:1 !important; /* for IE */
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+        content: " " !important;
+        display: table !important;
+    }
+
+    .clearfix:after {
+        clear: both !important;
+    }
+
+    /* end clearfix*/
 </style>

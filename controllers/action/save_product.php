@@ -12,6 +12,10 @@
         $image_size = $_FILES['item_image']['size'];
         $image_tmp = $_FILES['item_image']['tmp_name'];
 
+        /*Section Item Quantitites*/
+        $sections = $DB::getQ('r_user_sections',"status=1");
+
+
         $allowed_formats = array('jpg','jpeg','png');
 
         $item_nameOK = $UT::input_length($item_name, 2);
@@ -69,6 +73,12 @@
                     $item_sku = array_keys($skus)[0];
                     if(!empty($item_sku) and isset($item_sku)){
                         $update = $DB::update('r_items',"item_sku='$item_sku'","uid='$item_id'");
+                        while($s = mysqli_fetch_assoc($sections)){
+                            $quantity = $_POST[$s["section_name"]];
+                            $flds = array('item_id','section_id','quantity');
+                            $vls = array("$item_id","$s[uid]","$quantity");
+                            $insert_qty = $DB::insert('r_section_quantity',$flds,$vls);
+                        }
                         if($update){
                             $refresh = 1;
                             echo $UT::success("Item Created with SKU: $item_sku");

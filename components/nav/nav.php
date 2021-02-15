@@ -7,20 +7,22 @@
             <a class="nav-link js-show-cart"><i class="zmdi zmdi-menu fs-25"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="home" class="nav-link">Home</a>
+            <a href="http://localhost/pos/home" class="nav-link">Home</a>
         </li>
     </ul>
 
     <!-- SEARCH FORM -->
     <form class="form-inline ml-3">
         <div class="input-group input-group-sm">
-            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control form-control-navbar search-form" type="search" placeholder="Search" aria-label="Search">
+            <ul class="resultsA header-cart-wrapitem w-full" style="display: none; "></ul>
             <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
         </div>
+
     </form>
 
     <!-- Right navbar links -->
@@ -29,14 +31,14 @@
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <img class="avatar" src="<?php echo $UT::get_gravatar($user_email,256, 'wavatar', 'x') ?>" width="30" height="30" alt="IMG_AVATAR" />
-                <span class="m-l-2"><?php echo $user_names; ?></span>
+                <span class="m-l-2 user_names"><?php echo $user_names; ?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <a href="profile" class="dropdown-item">
+                <a href="http://localhost/pos/profile" class="dropdown-item">
                     <i class="zmdi zmdi-account"></i>&nbsp;&nbsp;Profile
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="logout" class="dropdown-item">
+                <a href="http://localhost/pos/logout" class="dropdown-item">
                     <i class="zmdi zmdi-power"></i>&nbsp;&nbsp;Log Out
                 </a>
             </div>
@@ -61,31 +63,31 @@
         <div class="flex-w flex-sb-m p-b-8">
             <ul class="header-menu list-group list-group-flush js-scroll">
                 <li class="list-group-item">
-                    <a href="customers">
+                    <a href="http://localhost/pos/customers">
                         <i class="zmdi zmdi-accounts fs-20"></i>
                         Customers
                     </a>
                 </li>
                 <li class="list-group-item">
-                    <a href="shop">
+                    <a href="http://localhost/pos/shop">
                         <i class="zmdi zmdi-store-24 fs-20"></i>
                         Sales
                     </a>
                 </li>
                 <li class="list-group-item">
-                    <a href="products">
+                    <a href="http://localhost/pos/products">
                         <i class="zmdi zmdi-store fs-20"></i>
                         Products
                     </a>
                 </li>
                 <li class="list-group-item">
-                    <a href="categories">
+                    <a href="http://localhost/pos/categories">
                         <i class="zmdi zmdi-view-toc fs-20"></i>
                         Categories
                     </a>
                 </li>
                 <li class="list-group-item">
-                    <a href="orders">
+                    <a href="http://localhost/pos/orders">
                         <i class="zmdi zmdi-case-check fs-20"></i>
                         Orders
                     </a>
@@ -109,7 +111,7 @@
                     </a>
                 </li>
                 <li class="list-group-item">
-                    <a href="settings">
+                    <a href="http://localhost/pos/settings">
                         <i class="zmdi zmdi-settings fs-20"></i>
                         Settings
                     </a>
